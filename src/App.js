@@ -1,4 +1,4 @@
-import "./App.css";
+import styles from "./styles/App.module.css";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import Doc from "./components/Document";
@@ -18,8 +18,8 @@ function App() {
   return (
     <Router>
       <Route exact path="/">
-        <div className="App">
-          <h1>Documents</h1>
+        <div className={styles.app}>
+          <h3>Documents</h3>
           <ul>
             {documents.map((item) => {
               return (

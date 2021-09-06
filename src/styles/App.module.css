@@ -1,0 +1,12 @@
+.app {
+  margin: 1em;
+  width: fit-content;
+}
+.app h3 {
+  border-bottom: 0.5px solid grey;
+}
+.app ul {
+}
+.app ul Link {
+  text-decoration: none;
+}

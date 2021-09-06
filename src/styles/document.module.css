@@ -1,8 +1,8 @@
 .main {
   display: flex;
   min-height: 100vh;
-
   background-color: rgb(249 249 249);
+  overflow: hidden;
 }
 .left {
   display: flex;
@@ -13,16 +13,8 @@
 }
 .right {
   flex: 0.5;
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-}
-.pdf {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .rectangle {
