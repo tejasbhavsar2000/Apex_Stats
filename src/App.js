@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import Doc from "./components/Document";
 
 function App() {
+  const [documents, setDocuments] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      const res = await fetch(`https://menu.classforma.com:5000/get_docs/`);
+      const data = await res.json();
+      setDocuments(data);
+      console.log("ksajdf");
+    };
+    getData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route exact path="/">
+        <div className="App">
+          <h1>Documents</h1>
+          <ul>
+            {documents.map((item) => {
+              return (
+                <Link to={`/document/${item._id}`}>
+                  <li>{item.filename}</li>
+                </Link>
+              );
+            })}
+          </ul>
+        </div>
+      </Route>
+      <Route path="/document/:id" exact component={Doc} />
+    </Router>
   );
 }
 
